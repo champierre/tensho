@@ -13,16 +13,22 @@ fontFace.load().then(() => {
 
 function drawText() {
   const text = textInput.value;
-  const canvasWidth = 500;
-  const canvasHeight = 200;
+  const fontSize = 48;
+
+  const textMetrics = ctx.measureText(text);
+  const textWidth = Math.ceil(textMetrics.width);
+  const textHeight = Math.ceil(fontSize);
+
+  const canvasWidth = textWidth + 4;
+  const canvasHeight = textHeight + 4;
 
   canvas.width = canvasWidth;
-  canvas.height = canvasHeight;
+  canvas.height = canvasHeight; 
 
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-  ctx.font = "48px HOT-TenshoStd-M";
+  ctx.font = `${fontSize}px HOT-TenshoStd-M`;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.fillStyle = "black";
